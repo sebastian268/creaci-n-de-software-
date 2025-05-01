@@ -1,0 +1,9 @@
+Sharathchandark. (2024, 31 diciembre). Password Validation Check in HTML CSS & JavaScript | Show Hide Password Toggle. Medium. https://medium.com/@sharathchandark/password-validation-check-in-html-css-javascript-show-hide-password-toggle-c57ebde8eb8e
+
+W3Schools.com. (s. f.-a). https://www.w3schools.com/css/css3_transitions.asp
+
+W3Schools.com. (s. f.-b). https://www.w3schools.com/cssref/css3_pr_box-shadow.php
+
+ChatGPT. (2025, mayo 1). Discusión sobre la validación de inputs en formularios y su seguridad. OpenAI. https://chat.openai.com
+
+ChatGPT. (2025, mayo 1). Ayuda para corregir errores en un código JavaScript. OpenAI. https://chat.openai.com
