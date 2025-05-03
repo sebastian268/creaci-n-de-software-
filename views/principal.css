@@ -1,0 +1,43 @@
+
+
+body, h1, a, nav {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    /* lo mas cercano que encontre al color tec lol */
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+nav {
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    text-decoration: none;
+    color: #3498db;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f16c13;
+}
+
+
