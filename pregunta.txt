@@ -1,0 +1,4 @@
+Describe el archivo package.json.
+
+El archivo package.json es un archivo done viene un listado de todas esas librerias de las que depende el código para poder funcionar de manera correcta, y al momento de usar npm estas dependecias se instalan de
+manera automatica para que así no haya problema al momento de compilar
