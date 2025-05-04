@@ -1,0 +1,28 @@
+
+CREATE TABLE Materiales (
+    Clave INT PRIMARY KEY,
+    Descripcion VARCHAR(100),
+    Costo FLOAT
+);
+
+CREATE TABLE Proveedores (
+    RFC VARCHAR(15) PRIMARY KEY,
+    RazonSocial VARCHAR(100)
+);
+
+CREATE TABLE Proyectos (
+    Numero INT PRIMARY KEY,
+    Denominacion VARCHAR(100)
+);
+
+CREATE TABLE Entregan (
+    Clave INT,
+    RFC VARCHAR(15),
+    Numero INT,
+    Fecha DATE,
+    Cantidad INT,
+    PRIMARY KEY (Clave, RFC, Numero, Fecha),
+    FOREIGN KEY (Clave) REFERENCES Materiales(Clave),
+    FOREIGN KEY (RFC) REFERENCES Proveedores(RFC),
+    FOREIGN KEY (Numero) REFERENCES Proyectos(Numero)
+);
