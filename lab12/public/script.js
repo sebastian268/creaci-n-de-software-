@@ -1,0 +1,2 @@
+
+alert("Adios mundo cruel");
