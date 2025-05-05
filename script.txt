@@ -1,0 +1,6 @@
+En este archivo pondre como realice las consultas.
+Para la realización de las tablas hubo uno de los 4 archivos csv que no permitía subir el archivo debido a que se repetía la primary key.
+
+
+
+
