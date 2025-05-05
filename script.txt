@@ -2,5 +2,87 @@ En este archivo pondre como realice las consultas.
 Para la realización de las tablas hubo uno de los 4 archivos csv que no permitía subir el archivo debido a que se repetía la primary key.
 
 
+Los materiales (clave y descripción) entregados al proyecto "México sin ti no estamos completos".
+
+SELECT M.Clave, M.Descripción
+FROM Materiales M
+JOIN Entregan E ON M.Clave = E.Clave
+JOIN Proyectos P ON E.Numero = P.Numero
+WHERE P.Denominacion = 'México sin ti no estamos completos';
+
+Los materiales (clave y descripción) que han sido proporcionados por el proveedor "Acme tools".
+
+SELECT M.Clave, M.Descripción
+FROM Materiales M
+JOIN Entregan E ON M.Clave = E.Clave
+JOIN Proveedores P ON E.RFC = P.RFC
+WHERE P.RazonSocial = 'Acme tools';
+
+El RFC de los proveedores que durante el 2000 entregaron en promedio cuando menos 300 materiales.
+
+SELECT E.RFC
+FROM Entregan E
+WHERE YEAR(E.Fecha) = 2000
+GROUP BY E.RFC
+HAVING AVG(E.Cantidad) >= 300;
+
+El Total entregado por cada material en el año 2000.
+
+SELECT M.Descripción, SUM(E.Cantidad) AS TotalEntregado
+FROM Entregan E
+JOIN Materiales M ON E.Clave = M.Clave
+WHERE YEAR(E.Fecha) = 2000
+GROUP BY M.Descripción;
+
+
+La Clave del material más vendido durante el 2001 (con vista intermedia).
+
+SELECT E.Clave
+FROM Entregan E
+WHERE YEAR(E.Fecha) = 2001
+GROUP BY E.Clave
+ORDER BY SUM(E.Cantidad) DESC
+LIMIT 1;
+
+Productos que contienen el patrón 'ub' en su nombre:
+
+SELECT * 
+FROM Materiales
+WHERE Descripción LIKE '%ub%';
+
+Denominación, RFC y RazonSocial de los proveedores que se suministran materiales al proyecto 'Televisa en acción' que no se encuentran apoyando al proyecto 'Educando en Coahuila' (Sin usar vistas, usando NOT IN o EXISTS).
+
+SELECT P.Denominacion, P.RFC, P.RazonSocial
+FROM Proveedores P
+WHERE EXISTS (
+    SELECT 1 
+    FROM Entregan E
+    JOIN Proyectos PR ON E.Numero = PR.Numero
+    WHERE PR.Denominacion = 'Televisa en acción' AND E.RFC = P.RFC
+) 
+AND NOT EXISTS (
+    SELECT 1 
+    FROM Entregan E
+    JOIN Proyectos PR ON E.Numero = PR.Numero
+    WHERE PR.Denominacion = 'Educando en Coahuila' AND E.RFC = P.RFC
+);
+
+
+Costo de los materiales y los Materiales que son entregados al proyecto 'Televisa en acción' cuyos proveedores también suministran materiales al proyecto 'Educando en Coahuila'.
+
+
+SELECT M.Descripción, M.Costo
+FROM Materiales M
+JOIN Entregan E ON M.Clave = E.Clave
+WHERE E.Numero = (SELECT Numero FROM Proyectos WHERE Denominacion = 'Televisa en acción')
+AND E.RFC IN (
+    SELECT E.RFC
+    FROM Entregan E
+    JOIN Proyectos P ON E.Numero = P.Numero
+    WHERE P.Denominacion = 'Educando en Coahuila'
+);
+
+
+
 
 
